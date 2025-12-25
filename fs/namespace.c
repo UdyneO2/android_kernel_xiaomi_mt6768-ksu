@@ -127,7 +127,6 @@ static void mnt_free_id(struct mount *mnt)
  */
 static int mnt_alloc_group_id(struct mount *mnt)
 {
-	int res = ida_alloc_min(&mnt_group_ida, 1, GFP_KERNEL);
 #ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
 	int res;
 
