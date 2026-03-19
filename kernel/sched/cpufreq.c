@@ -9,6 +9,8 @@
  * published by the Free Software Foundation.
  */
 
+#include <linux/cpufreq.h>
+
 #include "sched.h"
 
 DEFINE_PER_CPU(struct update_util_data *, cpufreq_update_util_data);
