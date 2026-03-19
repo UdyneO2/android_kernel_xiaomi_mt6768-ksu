@@ -4705,6 +4705,10 @@ static ssize_t store_enable(struct kobject *kobj, struct kobj_attribute *attr,
 	else if (kstrtouint(buf, 0, &caps))
 		return -EINVAL;
 
+	/* Force-enable MM walk whenever the architecture supports it. */
+	if (arch_has_hw_pte_young())
+		caps |= BIT(LRU_GEN_MM_WALK);
+
 	for (i = 0; i < NR_LRU_GEN_CAPS; i++) {
 		bool enable = caps & BIT(i);
 
